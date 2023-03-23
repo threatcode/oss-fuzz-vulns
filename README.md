@@ -30,7 +30,7 @@ across different branches for each vulnerability
 
 OSV also provides an [API](https://osv.dev/docs/) to let users easily query this information.
 
-[OSV]: https://github.com/google/osv
+[OSV]: https://github.com/threatcode/osv
 
 ## Missing entries
 

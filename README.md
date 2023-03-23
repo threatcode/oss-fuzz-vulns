@@ -1,6 +1,6 @@
 # OSS-Fuzz vulnerabilities
 
-This is a repo for recording disclosed [OSS-Fuzz](https://github.com/google/oss-fuzz)
+This is a repo for recording disclosed [OSS-Fuzz](https://github.com/threatcode/oss-fuzz)
 vulnerabilities, and acts as the source of truth for OSS-Fuzz vulnerabilities in
 [OSV].
 

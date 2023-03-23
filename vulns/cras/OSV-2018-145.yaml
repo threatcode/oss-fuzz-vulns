@@ -1,0 +1,30 @@
+id: OSV-2018-145
+summary: Heap-buffer-overflow in cras_rclient_message_from_client
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=9242
+
+  ```
+  Crash type: Heap-buffer-overflow READ 4
+  Crash state:
+  cras_rclient_message_from_client
+  cras_rclient_buffer_from_client
+  rclient_message.cc
+  ```
+modified: '2022-04-13T03:04:42.571384Z'
+published: '2021-01-13T00:01:03.526117Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=9242
+affected:
+- package:
+    name: cras
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://chromium.googlesource.com/chromiumos/third_party/adhd
+    events:
+    - introduced: e93453f0593494a74a2c54dcdebdf540edf97480
+    - fixed: 93da42478916101d701158c355f06912ae526f15
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

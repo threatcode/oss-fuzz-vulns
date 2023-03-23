@@ -1,0 +1,31 @@
+id: OSV-2020-1148
+summary: Heap-buffer-overflow in asn1_item_ex_d2i
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=14217
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  asn1_item_ex_d2i
+  ASN1_item_d2i
+  d2i_PrivateKey
+  ```
+modified: '2022-04-13T03:04:38.778921Z'
+published: '2020-07-22T21:49:51.151710Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=14217
+affected:
+- package:
+    name: libressl
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/libressl-portable/portable.git
+    events:
+    - introduced: 4ea2a01a0d2cc889e95316f51c7a36f8f158df44
+    - fixed: 2f7827344a0234320c7ad8d2fc2418e9d8a586c9
+  ecosystem_specific:
+    severity: MEDIUM
+    introduced_range: unknown:4ea2a01a0d2cc889e95316f51c7a36f8f158df44
+  versions: []

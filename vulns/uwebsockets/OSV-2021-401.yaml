@@ -1,0 +1,29 @@
+id: OSV-2021-401
+summary: Segv on unknown address in us_internal_dispatch_ready_poll
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=30951
+
+  ```
+  Crash type: Segv on unknown address
+  Crash state:
+  us_internal_dispatch_ready_poll
+  us_loop_run
+  test
+  ```
+modified: '2022-04-13T03:04:40.981759Z'
+published: '2021-02-16T00:00:19.243505Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=30951
+affected:
+- package:
+    name: uwebsockets
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/uNetworking/uWebSockets.git
+    events:
+    - introduced: 6f1c0d802221b5eaae49acef8c2cfa48433583fb
+    - fixed: 1ef15da77b591594b19a5a81f5c80fb3b34d089f
+  versions:
+  - v19.0.0a4

@@ -1,0 +1,30 @@
+id: OSV-2020-166
+summary: Heap-buffer-overflow in ndpi_parse_packet_line_info
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=22498
+
+  ```
+  Crash type: Heap-buffer-overflow READ 2
+  Crash state:
+  ndpi_parse_packet_line_info
+  ndpi_int_search_bittorrent_tcp_zero
+  ndpi_int_search_bittorrent_tcp
+  ```
+modified: '2022-04-13T03:04:35.907890Z'
+published: '2020-06-24T01:51:17.034632Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=22498
+affected:
+- package:
+    name: ndpi
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/ntop/nDPI.git
+    events:
+    - introduced: cd765c08d6f1038ea5efd7a7cc556ca89bdec9e4
+    - fixed: d318285caec168b2b8a813845ae7b93b7e078aa3
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

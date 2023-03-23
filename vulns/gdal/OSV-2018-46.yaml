@@ -1,0 +1,33 @@
+id: OSV-2018-46
+summary: Heap-buffer-overflow in GDAL_LercNS::RLE::readCount
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=9282
+
+  ```
+  Crash type: Heap-buffer-overflow READ 2
+  Crash state:
+  GDAL_LercNS::RLE::readCount
+  GDAL_LercNS::RLE::decompress
+  GDAL_LercNS::Lerc2::ReadMask
+  ```
+modified: '2022-04-13T03:04:42.118866Z'
+published: '2021-01-13T00:00:25.728786Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=9282
+affected:
+- package:
+    name: gdal
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/OSGeo/gdal
+    events:
+    - introduced: 8d71d8997fc275f59a1fd8df9882ad0df8120340
+    - fixed: 3fe14382ac0cb578b7b5a978942b64dab97e2346
+    - fixed: e7776764cfa658d9a23a578a73a2df674e94da83
+  ecosystem_specific:
+    severity: MEDIUM
+  database_specific:
+    fixed_range: 8d71d8997fc275f59a1fd8df9882ad0df8120340:e7776764cfa658d9a23a578a73a2df674e94da83
+  versions: []

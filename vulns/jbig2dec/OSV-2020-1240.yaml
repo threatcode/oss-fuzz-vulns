@@ -1,0 +1,32 @@
+id: OSV-2020-1240
+summary: Use-of-uninitialized-value in jbig2_decode_mmr_line
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=17855
+
+  ```
+  Crash type: Use-of-uninitialized-value
+  Crash state:
+  jbig2_decode_mmr_line
+  jbig2_decode_halftone_mmr
+  jbig2_decode_gray_scale_image
+  ```
+modified: '2022-04-13T03:04:40.563878Z'
+published: '2020-07-22T21:49:59.411582Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=17855
+affected:
+- package:
+    name: jbig2dec
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: git://git.ghostscript.com/jbig2dec.git
+    events:
+    - introduced: 61a0253a481dd18f7fa3a4161f43dc333860050e
+    - fixed: dc14b5a69be02341d84e2956131f93f962408af2
+  versions:
+  - '0.18'
+  ecosystem_specific:
+    severity: MEDIUM
+    introduced_range: unknown:61a0253a481dd18f7fa3a4161f43dc333860050e

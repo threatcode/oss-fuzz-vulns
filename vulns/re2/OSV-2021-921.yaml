@@ -1,0 +1,31 @@
+id: OSV-2021-921
+summary: Stack-buffer-overflow in bool re2::DFA::InlinedSearchLoop<true, true, true>
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=35821
+
+  ```
+  Crash type: Stack-buffer-overflow READ 1
+  Crash state:
+  bool re2::DFA::InlinedSearchLoop<true, true, true>
+  re2::DFA::Search
+  re2::Prog::SearchDFA
+  ```
+modified: '2022-04-13T03:04:36.453614Z'
+published: '2021-07-06T00:01:05.257431Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=35821
+affected:
+- package:
+    name: re2
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://code.googlesource.com/re2
+    events:
+    - introduced: b2af9b3a88b9397a3964b399cd2b927d9a80e2dc
+    - fixed: a5d27a7b2289c98849516aea50c807f3e3a5914b
+  ecosystem_specific:
+    fixed_range: b2af9b3a88b9397a3964b399cd2b927d9a80e2dc:a5d27a7b2289c98849516aea50c807f3e3a5914b
+    severity: MEDIUM
+  versions: []

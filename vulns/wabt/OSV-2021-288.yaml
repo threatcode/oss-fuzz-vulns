@@ -1,0 +1,31 @@
+id: OSV-2021-288
+summary: UNKNOWN READ in wabt::ReadBinary
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=30373
+
+  ```
+  Crash type: UNKNOWN READ
+  Crash state:
+  wabt::ReadBinary
+  wabt::ReadBinaryIr
+  wasm2wat_fuzzer.cc
+  ```
+modified: '2022-04-13T03:04:37.955214Z'
+published: '2021-02-07T00:00:01.703392Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=30373
+affected:
+- package:
+    name: wabt
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/WebAssembly/wabt
+    events:
+    - introduced: 24af5fa65c3c730d4b36810b4e2b0aa43794d29b
+    - fixed: 09ac53e41d959ce8e14e703e627327971e67f6d3
+    - fixed: e808dfe3fc7ec890be4ef59d4772afaa19af4847
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

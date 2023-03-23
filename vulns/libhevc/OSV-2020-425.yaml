@@ -1,0 +1,31 @@
+id: OSV-2020-425
+summary: Heap-buffer-overflow in ihevcd_parse_coding_unit
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=17055
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  ihevcd_parse_coding_unit
+  ihevcd_parse_coding_quadtree
+  ihevcd_parse_coding_quadtree
+  ```
+modified: '2022-04-13T03:04:30.934302Z'
+published: '2020-07-01T00:00:08.799539Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=17055
+affected:
+- package:
+    name: libhevc
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://android.googlesource.com/platform/external/libhevc
+    events:
+    - introduced: 67e394c9f3743b8ce41f11736136319efcef6d3d
+    - fixed: 60f9768c9e8488be9f5b5ba88ffe0a4528504a68
+  versions:
+  - platform-tools-29.0.5
+  ecosystem_specific:
+    severity: MEDIUM

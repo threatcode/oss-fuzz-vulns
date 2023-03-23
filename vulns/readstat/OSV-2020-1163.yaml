@@ -1,0 +1,31 @@
+id: OSV-2020-1163
+summary: Heap-buffer-overflow in readstat_convert
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=12566
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  readstat_convert
+  sas7bcat_parse_value_labels
+  sas7bcat_parse_block
+  ```
+modified: '2022-04-13T03:04:40.619015Z'
+published: '2020-07-22T21:49:52.343920Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=12566
+affected:
+- package:
+    name: readstat
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/WizardMac/ReadStat
+    events:
+    - introduced: d1bfd735515803800cb9708e3fca9e5c1e8e7a48
+    - fixed: dffa53abee99d49470d93531a95b9595d90ac5c7
+  ecosystem_specific:
+    severity: MEDIUM
+    introduced_range: unknown:d1bfd735515803800cb9708e3fca9e5c1e8e7a48
+  versions: []

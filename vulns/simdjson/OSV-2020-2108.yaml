@@ -1,0 +1,30 @@
+id: OSV-2020-2108
+summary: Stack-buffer-overflow in simdjson::internal::decimal_right_shift
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=26773
+
+  ```
+  Crash type: Stack-buffer-overflow READ 1
+  Crash state:
+  simdjson::internal::decimal_right_shift
+  simdjson::internal::adjusted_mantissa simdjson::internal::compute_float<simdjson
+  simdjson::internal::adjusted_mantissa simdjson::internal::parse_long_mantissa<si
+  ```
+modified: '2022-04-13T03:04:31.427396Z'
+published: '2020-10-31T00:00:09.494294Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=26773
+affected:
+- package:
+    name: simdjson
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/simdjson/simdjson.git
+    events:
+    - introduced: 562d4f4f5855c1b7c8040df24c45ea98c26cab78
+    - fixed: a8bf10ea5a0ea2553f07ac46744666c94d0085fc
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

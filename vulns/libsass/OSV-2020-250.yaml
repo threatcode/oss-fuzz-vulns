@@ -1,0 +1,32 @@
+id: OSV-2020-250
+summary: UNKNOWN READ in Sass::Inspect::operator
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=19988
+
+  ```
+  Crash type: UNKNOWN READ
+  Crash state:
+  Sass::Inspect::operator
+  Sass::Output::operator
+  Sass::Output::operator
+  ```
+modified: '2022-04-13T03:04:38.471160Z'
+published: '2020-06-26T00:00:10.424929Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=19988
+affected:
+- package:
+    name: libsass
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/sass/libsass.git
+    events:
+    - introduced: f964dcddd76f4c1f00da06bfd905be790618c33b
+    - fixed: e904bce8ac6c8e16fed27b4cc5fe3418be7689a5
+  versions:
+  - 3.6.2
+  - 3.6.3
+  ecosystem_specific:
+    severity: MEDIUM

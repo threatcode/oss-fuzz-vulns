@@ -1,0 +1,28 @@
+id: OSV-2020-574
+summary: Negative-size-param in r_buf_read
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=14832
+
+  ```
+  Crash type: Negative-size-param
+  Crash state:
+  r_buf_read
+  bin_pe_get_certificate
+  bin_pe_init
+  ```
+modified: '2022-04-13T03:04:36.642767Z'
+published: '2020-07-01T00:00:17.857259Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=14832
+affected:
+- package:
+    name: radare2
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/radare/radare2
+    events:
+    - introduced: 66f7403245c923c192019ef0219f67b9928b39da
+    - fixed: 9392fc7117dd5240c76d8ab81d84b482bc968339
+  versions: []

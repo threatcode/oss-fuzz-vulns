@@ -1,0 +1,31 @@
+id: OSV-2021-534
+summary: Container-overflow in tesseract::ExtractResults16
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=32142
+
+  ```
+  Crash type: Container-overflow WRITE {*}
+  Crash state:
+  tesseract::ExtractResults16
+  tesseract::PartialMatrixDotVector16
+  tesseract::matrixDotVector
+  ```
+modified: '2022-04-13T03:04:31.477640Z'
+published: '2021-03-19T00:00:04.481954Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=32142
+affected:
+- package:
+    name: tesseract-ocr
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/tesseract-ocr/tesseract
+    events:
+    - introduced: 2a3682a35e643cefb86eefa4c9a3deddc75295bd
+    - fixed: 91b2b4f4a08d4693b02838636c53a2af93397138
+  versions:
+  - 5.0.0-alpha-20210401
+  ecosystem_specific:
+    severity: HIGH

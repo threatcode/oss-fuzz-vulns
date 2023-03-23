@@ -1,0 +1,32 @@
+id: OSV-2020-918
+summary: Heap-buffer-overflow in ndpi_search_oracle
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=21780
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  ndpi_search_oracle
+  check_ndpi_tcp_flow_func
+  ndpi_detection_process_packet
+  ```
+modified: '2022-04-13T03:04:36.106718Z'
+published: '2020-07-22T00:00:06.875320Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=21780
+affected:
+- package:
+    name: ndpi
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/ntop/nDPI.git
+    events:
+    - introduced: e695dd6eade754b2d50bdf297ca8bdc4105f93ff
+    - fixed: 17235d234eb6a55fd0753ab4f3b6fc8f66eb7659
+  versions:
+  - '3.2'
+  ecosystem_specific:
+    severity: MEDIUM
+    introduced_range: unknown:e695dd6eade754b2d50bdf297ca8bdc4105f93ff

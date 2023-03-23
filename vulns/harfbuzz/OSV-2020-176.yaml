@@ -1,0 +1,30 @@
+id: OSV-2020-176
+summary: UNKNOWN READ in OT::SBIXGlyph::copy
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=20223
+
+  ```
+  Crash type: UNKNOWN READ
+  Crash state:
+  OT::SBIXGlyph::copy
+  OT::SBIXStrike::subset
+  OT::sbix::add_strike
+  ```
+modified: '2022-04-13T03:04:33.055752Z'
+published: '2020-06-24T01:51:17.508470Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=20223
+affected:
+- package:
+    name: harfbuzz
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/harfbuzz/harfbuzz.git
+    events:
+    - introduced: 93376a64362a0d062aa3f9f39bfe0d7b4328a92e
+    - fixed: 8614a30bc9763ba7f8b452df5527d806bacf4fd9
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

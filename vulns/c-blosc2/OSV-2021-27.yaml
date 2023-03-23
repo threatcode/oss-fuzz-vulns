@@ -1,0 +1,30 @@
+id: OSV-2021-27
+summary: Heap-buffer-overflow in ZSTD_createDDict_advanced
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=29369
+
+  ```
+  Crash type: Heap-buffer-overflow READ {*}
+  Crash state:
+  ZSTD_createDDict_advanced
+  ZSTD_createDDict
+  blosc_run_decompression_with_context
+  ```
+modified: '2022-04-13T03:04:40.291698Z'
+published: '2021-01-08T00:00:22.452598Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=29369
+affected:
+- package:
+    name: c-blosc2
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/Blosc/c-blosc2.git
+    events:
+    - introduced: 67f327a7af1e182d3001ae78d8e39178eb80ea56
+    - fixed: c473b21cff5e1a459b4467f18bf7414114f848fd
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

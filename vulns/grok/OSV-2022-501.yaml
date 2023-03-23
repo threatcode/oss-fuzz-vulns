@@ -1,0 +1,33 @@
+id: OSV-2022-501
+summary: UNKNOWN WRITE in grk::TileLengthMarkers::seek
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=48224
+
+  ```
+  Crash type: UNKNOWN WRITE
+  Crash state:
+  grk::TileLengthMarkers::seek
+  grk::CodeStreamDecompress::skipNonScheduledTLM
+  grk::CodeStreamDecompress::parseTileParts
+  ```
+modified: '2022-06-27T00:04:10.724141Z'
+published: '2022-06-24T00:01:56.977425Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=48224
+affected:
+- package:
+    name: grok
+    ecosystem: OSS-Fuzz
+    purl: pkg:generic/grok
+  ranges:
+  - type: GIT
+    repo: https://github.com/GrokImageCompression/grok.git
+    events:
+    - introduced: 48d2c98b803c5e2ddddaa6281ba02aa7adc4777d
+    - fixed: edecdb89539e32c31b701ba2cf6140737135697a
+  versions:
+  - v9.7.8
+  ecosystem_specific:
+    severity: HIGH
+schema_version: 1.2.0

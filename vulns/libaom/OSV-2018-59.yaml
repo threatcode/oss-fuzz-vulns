@@ -1,0 +1,30 @@
+id: OSV-2018-59
+summary: Heap-use-after-free in read_uncompressed_header
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=10200
+
+  ```
+  Crash type: Heap-use-after-free WRITE 2
+  Crash state:
+  read_uncompressed_header
+  av1_decode_frame_headers_and_setup
+  aom_decode_frame_from_obus
+  ```
+modified: '2022-04-13T03:04:39.458213Z'
+published: '2021-01-13T00:00:29.924163Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=10200
+affected:
+- package:
+    name: libaom
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://aomedia.googlesource.com/aom
+    events:
+    - introduced: 2754f83f65eb57fb9aff7029f355ad57421b57f3
+    - fixed: bb5c2833051f4bc8d084bbbe8c8adbdad7dd5449
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

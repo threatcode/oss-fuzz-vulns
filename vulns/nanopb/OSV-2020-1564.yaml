@@ -1,0 +1,30 @@
+id: OSV-2020-1564
+summary: Use-of-uninitialized-value in pb_encode_varint
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24582
+
+  ```
+  Crash type: Use-of-uninitialized-value
+  Crash state:
+  pb_encode_varint
+  pb_enc_varint
+  encode_array
+  ```
+modified: '2022-04-13T03:04:32.622428Z'
+published: '2020-08-02T00:00:28.082567Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24582
+affected:
+- package:
+    name: nanopb
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/nanopb/nanopb
+    events:
+    - introduced: a5988446e6a257a1c968f8a7a6366f5101d85413
+    - fixed: cf507d1b1e71b45136ca2bd7d37b7b4958443cd1
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

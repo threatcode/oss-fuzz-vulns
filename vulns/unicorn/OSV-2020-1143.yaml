@@ -1,0 +1,32 @@
+id: OSV-2020-1143
+summary: UNKNOWN WRITE in mips_release_mips
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=13852
+
+  ```
+  Crash type: UNKNOWN WRITE
+  Crash state:
+  mips_release_mips
+  uc_close
+  fuzz_emu_mips_32be.c
+  ```
+modified: '2022-04-13T03:04:39.204639Z'
+published: '2020-07-22T21:49:50.620818Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=13852
+affected:
+- package:
+    name: unicorn
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/unicorn-engine/unicorn.git
+    events:
+    - introduced: 12bcf3bea093ed733904d3993bbdba0c2572a497
+    - fixed: 8b99637f774436e222e6d4393135aab0964967a0
+  versions:
+  - 1.0.2-rc1
+  ecosystem_specific:
+    severity: HIGH
+    introduced_range: unknown:12bcf3bea093ed733904d3993bbdba0c2572a497

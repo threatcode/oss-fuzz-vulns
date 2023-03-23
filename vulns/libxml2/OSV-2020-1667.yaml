@@ -1,0 +1,30 @@
+id: OSV-2020-1667
+summary: Heap-use-after-free in xmlTextReaderRead
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=25210
+
+  ```
+  Crash type: Heap-use-after-free READ 4
+  Crash state:
+  xmlTextReaderRead
+  xml.c
+  xmlTextReaderFreeNode
+  ```
+modified: '2022-04-13T03:04:39.916971Z'
+published: '2020-08-27T00:00:24.605339Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=25210
+affected:
+- package:
+    name: libxml2
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://gitlab.gnome.org/GNOME/libxml2.git
+    events:
+    - introduced: 00ed736eecf93aeab49089abb06e0e5fc0e7e091
+    - fixed: ba589adc2f86c6be9ad7e0d771d4c9b09d059b89
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

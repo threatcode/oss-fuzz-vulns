@@ -1,0 +1,30 @@
+id: OSV-2018-43
+summary: Heap-buffer-overflow in OT::post::accelerator_t::cmp_gids
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=11263
+
+  ```
+  Crash type: Heap-buffer-overflow READ {*}
+  Crash state:
+  OT::post::accelerator_t::cmp_gids
+  sort_r_cmpswap
+  sort_r_simple
+  ```
+modified: '2022-04-13T03:04:33.153002Z'
+published: '2021-01-13T00:00:24.227595Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=11263
+affected:
+- package:
+    name: harfbuzz
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/harfbuzz/harfbuzz.git
+    events:
+    - introduced: bce437cf0b71e9b60bbf058eaf61593fed30ae33
+    - fixed: 6482fda519ca7d173e3bcb3717aa30e237f04b25
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

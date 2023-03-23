@@ -1,0 +1,30 @@
+id: OSV-2020-1741
+summary: Heap-use-after-free in zend_assign_to_variable
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=25601
+
+  ```
+  Crash type: Heap-use-after-free READ 1
+  Crash state:
+  zend_assign_to_variable
+  zend_std_write_property
+  ZEND_ASSIGN_OBJ_SPEC_CV_CONST_OP_DATA_VAR_HANDLER
+  ```
+modified: '2022-04-13T03:04:33.349367Z'
+published: '2020-09-13T00:00:46.091782Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=25601
+affected:
+- package:
+    name: php
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/php/php-src.git
+    events:
+    - introduced: 1902f730ee2bda60552f34c0643e2d7b47e4fb64
+    - fixed: e80dbd5f38b8bfc27153485f3ed3d24789d7d83a
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

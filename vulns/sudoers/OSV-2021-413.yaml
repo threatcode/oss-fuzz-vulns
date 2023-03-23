@@ -1,0 +1,30 @@
+id: OSV-2021-413
+summary: UNKNOWN WRITE in sudo_user_free
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31042
+
+  ```
+  Crash type: UNKNOWN WRITE
+  Crash state:
+  sudo_user_free
+  sudoers_policy_close
+  fuzz_policy.c
+  ```
+modified: '2022-04-13T03:04:39.331541Z'
+published: '2021-02-18T00:02:34.207161Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31042
+affected:
+- package:
+    name: sudoers
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/sudo-project/sudo
+    events:
+    - introduced: d2350833420195c1d10d957699524f5b229da454
+    - fixed: ae3a098d2f0988b63a780523a006a3db8e8b3872
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

@@ -1,0 +1,49 @@
+id: OSV-2020-2220
+summary: Heap-buffer-overflow in mk_rconf_read
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=28241
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  mk_rconf_read
+  mk_rconf_open
+  flb_parser_conf_file
+  ```
+modified: '2022-04-13T03:22:34.172257Z'
+published: '2020-12-04T00:00:07.219620Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=28241
+affected:
+- package:
+    name: fluent-bit
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/fluent/fluent-bit/
+    events:
+    - introduced: 10ceb5b2ab6635a000f3eceaa267e1e34496de6b
+    - fixed: 03f3339594bdb472315823db78ca209b7ba319fb
+  versions:
+  - v1.7.0
+  - v1.7.0-rc1
+  - v1.7.0-rc2
+  - v1.7.0-rc3
+  - v1.7.0-rc4
+  - v1.7.0-rc5
+  - v1.7.0-rc6
+  - v1.7.0-rc7
+  - v1.7.0-rc8
+  - v1.7.0-rc9
+  - v1.7.1
+  - v1.7.2
+  - v1.7.3
+  - v1.7.4
+  - v1.7.5
+  - v1.7.6
+  - v1.7.7
+  - v1.7.8
+  - v1.7.9
+  ecosystem_specific:
+    severity: MEDIUM

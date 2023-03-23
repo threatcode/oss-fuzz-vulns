@@ -1,0 +1,31 @@
+id: OSV-2020-903
+summary: Heap-buffer-overflow in rasteropGeneralLow
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24134
+
+  ```
+  Crash type: Heap-buffer-overflow READ 4
+  Crash state:
+  rasteropGeneralLow
+  rasteropLow
+  pixRasterop
+  ```
+modified: '2022-04-13T03:04:32.699227Z'
+published: '2020-07-21T00:00:19.151415Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24134
+affected:
+- package:
+    name: leptonica
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/DanBloomberg/leptonica.git
+    events:
+    - introduced: f053b173bc94ef35a99ddf8eb608f63ae794b5fa
+    - fixed: 8b06c6b77c92b5649753415c31c6792eaa88a0cb
+  versions:
+  - 1.80.0
+  ecosystem_specific:
+    severity: MEDIUM

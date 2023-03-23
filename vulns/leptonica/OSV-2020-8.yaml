@@ -1,0 +1,30 @@
+id: OSV-2020-8
+summary: Heap-buffer-overflow in findNextBorderPixel
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=23433
+
+  ```
+  Crash type: Heap-buffer-overflow READ 4
+  Crash state:
+  findNextBorderPixel
+  pixGetHoleBorder
+  pixGetCCBorders
+  ```
+modified: '2022-04-13T03:04:32.639074Z'
+published: '2020-06-24T01:51:09.673990Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=23433
+affected:
+- package:
+    name: leptonica
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/DanBloomberg/leptonica.git
+    events:
+    - introduced: a53cfc7bd554dc4c2644b8f27ac5296fd926725f
+    - fixed: 8d6e1755518cfb98536d6c3daf0601f226d16842
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

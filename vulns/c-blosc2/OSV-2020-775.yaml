@@ -1,0 +1,30 @@
+id: OSV-2020-775
+summary: Use-of-uninitialized-value in blosc_run_decompression_with_context
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=23826
+
+  ```
+  Crash type: Use-of-uninitialized-value
+  Crash state:
+  blosc_run_decompression_with_context
+  blosc_decompress
+  fuzz_decompress.c
+  ```
+modified: '2022-04-13T03:04:40.488793Z'
+published: '2020-07-14T05:37:28.809837Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=23826
+affected:
+- package:
+    name: c-blosc2
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/Blosc/c-blosc2.git
+    events:
+    - introduced: 64fd6b78baf939ef32c3bfe118f718242d0e3f4c
+    - fixed: d80b5acaf23ec4c2453a348b35096b99601fcde5
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

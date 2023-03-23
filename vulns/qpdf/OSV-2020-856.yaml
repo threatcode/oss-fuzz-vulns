@@ -1,0 +1,38 @@
+id: OSV-2020-856
+summary: Use-of-uninitialized-value in deflate_slow
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=18745
+
+  ```
+  Crash type: Use-of-uninitialized-value
+  Crash state:
+  deflate_slow
+  deflate
+  Pl_Flate::handleData
+  ```
+modified: '2022-04-13T03:04:31.549307Z'
+published: '2020-07-14T22:13:46.996334Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=18745
+affected:
+- package:
+    name: qpdf
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/qpdf/qpdf.git
+    events:
+    - introduced: 793d987b5fdd55330f2c0df532114c0ce13a25af
+    - fixed: 232f5fc9f3bed8e1b02bca5d10b2eca444e30f95
+  versions:
+  - release-qpdf-10.0.0
+  - release-qpdf-10.0.1
+  - release-qpdf-9.0.0
+  - release-qpdf-9.0.1
+  - release-qpdf-9.0.2
+  - release-qpdf-9.1.0
+  - release-qpdf-9.1.1
+  - release-qpdf-9.1.rc1
+  ecosystem_specific:
+    severity: MEDIUM

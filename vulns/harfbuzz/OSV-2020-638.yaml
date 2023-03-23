@@ -1,0 +1,31 @@
+id: OSV-2020-638
+summary: Heap-buffer-overflow in OT::UnsizedArrayOf<OT::IntType<unsigned char, 1u>
+  >::copy
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=14637
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  OT::UnsizedArrayOf<OT::IntType<unsigned char, 1u> >::copy
+  bool OT::OffsetTo<OT::UnsizedArrayOf<OT::IntType<unsigned char, 1u> >, OT::IntTy
+  OT::NameRecord::copy
+  ```
+modified: '2022-04-13T03:04:33.125806Z'
+published: '2020-07-01T00:00:21.866519Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=14637
+affected:
+- package:
+    name: harfbuzz
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/harfbuzz/harfbuzz.git
+    events:
+    - introduced: 59ee61fddc76cd18f19f351bca7dd293eb610333
+    - fixed: 503748d8a80dd5db450c8c4dc109f2b97049d989
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

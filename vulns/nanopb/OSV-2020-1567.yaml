@@ -1,0 +1,30 @@
+id: OSV-2020-1567
+summary: Heap-buffer-overflow in allocate_field
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24580
+
+  ```
+  Crash type: Heap-buffer-overflow WRITE 8
+  Crash state:
+  allocate_field
+  decode_pointer_field
+  decode_field
+  ```
+modified: '2022-04-13T03:04:32.617326Z'
+published: '2020-08-02T00:01:18.300186Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24580
+affected:
+- package:
+    name: nanopb
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/nanopb/nanopb
+    events:
+    - introduced: a5988446e6a257a1c968f8a7a6366f5101d85413
+    - fixed: cf507d1b1e71b45136ca2bd7d37b7b4958443cd1
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

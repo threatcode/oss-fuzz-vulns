@@ -1,0 +1,30 @@
+id: OSV-2020-2002
+summary: Heap-buffer-overflow in McChromaWithFragMv_c
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=26198
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  McChromaWithFragMv_c
+  McChroma_ssse3
+  WelsDec::BaseMC
+  ```
+modified: '2022-04-13T03:04:37.483499Z'
+published: '2020-10-09T00:00:14.875449Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=26198
+affected:
+- package:
+    name: openh264
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/cisco/openh264.git
+    events:
+    - introduced: 66ef706acd55b0b8daec32ca299d2586a1f473c9
+    - fixed: f1bb6d3acb057785b4d89e8228e23cc4fc9caa12
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

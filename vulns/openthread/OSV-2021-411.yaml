@@ -1,0 +1,30 @@
+id: OSV-2021-411
+summary: UNKNOWN READ in ot::Cli::Interpreter::OutputFormatV
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31002
+
+  ```
+  Crash type: UNKNOWN READ
+  Crash state:
+  ot::Cli::Interpreter::OutputFormatV
+  ot::Cli::Interpreter::OutputLine
+  ot::Cli::SrpServer::ProcessDomain
+  ```
+modified: '2022-04-13T03:04:38.883437Z'
+published: '2021-02-17T00:01:22.756139Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31002
+affected:
+- package:
+    name: openthread
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/openthread/openthread
+    events:
+    - introduced: 2cd36266abaaf8b79ebb0441e6ed2ec3847cf3ca
+    - fixed: ab7a25faebb9704877dae70befd7233773997328
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

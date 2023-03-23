@@ -1,0 +1,34 @@
+id: OSV-2020-691
+summary: UNKNOWN WRITE in ZSTD_decodeLiteralsBlock
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16541
+
+  ```
+  Crash type: UNKNOWN WRITE
+  Crash state:
+  ZSTD_decodeLiteralsBlock
+  ZSTD_decompressBlock
+  ZSTD_decompressDCtx
+  ```
+modified: '2022-04-13T03:35:33.844573Z'
+published: '2020-07-01T00:00:25.109905Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16541
+affected:
+- package:
+    name: zstd
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/facebook/zstd
+    events:
+    - introduced: 610a81ecf9593893ed2f69718d3ecbd234297804
+    - fixed: 07f22d465d0f85aa00f20fc2f0b59a50ddfe494f
+  versions:
+  - v1.4.1
+  - v1.4.2
+  - v1.4.3
+  - v1.4.0
+  ecosystem_specific:
+    severity: HIGH

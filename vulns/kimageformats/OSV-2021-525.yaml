@@ -1,0 +1,80 @@
+id: OSV-2021-525
+summary: Use-of-uninitialized-value in void edge_filtering_chroma_internal<unsigned
+  char>
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=32059
+
+  ```
+  Crash type: Use-of-uninitialized-value
+  Crash state:
+  void edge_filtering_chroma_internal<unsigned char>
+  edge_filtering_chroma
+  thread_task_deblock_CTBRow::work
+  ```
+modified: '2023-03-12T00:30:55.966589Z'
+published: '2021-03-16T00:00:19.176877Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=32059
+affected:
+- package:
+    name: kimageformats
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://invent.kde.org/frameworks/kimageformats.git
+    events:
+    - introduced: ca52d4ddf540cc731d0f31dbccc1897f7e6d9db4
+  versions:
+  - v5.80.0
+  - v5.80.0-rc1
+  - v5.81.0
+  - v5.81.0-rc1
+  - v5.81.0-rc2
+  - v5.82.0
+  - v5.82.0-rc1
+  - v5.82.0-rc2
+  - v5.83.0
+  - v5.83.0-rc1
+  - v5.84.0-rc1
+  - v5.85.0-rc1
+  - v5.85.0
+  - v5.86.0-rc1
+  - v5.86.0
+  - v5.87.0-rc1
+  - v5.87.0
+  - v5.88.0-rc1
+  - v5.88.0
+  - v5.89.0-rc1
+  - v5.89.0
+  - v5.90.0-rc1
+  - v5.90.0
+  - v5.91.0-rc1
+  - v5.91.0
+  - v5.92.0-rc1
+  - v5.92.0
+  - v5.93.0-rc1
+  - v5.93.0
+  - v5.94.0-rc1
+  - v5.94.0
+  - v5.95.0-rc1
+  - v5.95.0
+  - v5.96.0-rc1
+  - v5.96.0
+  - v5.97.0-rc1
+  - v5.97.0
+  - v5.98.0-rc1
+  - v5.98.0
+  - v5.99.0-rc1
+  - v5.99.0
+  - v5.100.0-rc1
+  - v5.101.0-rc1
+  - v5.101.0
+  - v5.102.0-rc1
+  - v5.102.0
+  - v5.103.0-rc1
+  - v5.103.0
+  - v5.104.0-rc1
+  - v5.104.0
+  ecosystem_specific:
+    severity: MEDIUM

@@ -1,0 +1,30 @@
+id: OSV-2020-448
+summary: Heap-use-after-free in read_chunks_before_idat
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16051
+
+  ```
+  Crash type: Heap-use-after-free READ 2
+  Crash state:
+  read_chunks_before_idat
+  get_ancillary
+  spng_decoded_image_size
+  ```
+modified: '2022-04-13T03:04:33.677865Z'
+published: '2020-07-01T00:00:10.159770Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16051
+affected:
+- package:
+    name: libspng
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/randy408/libspng.git
+    events:
+    - introduced: cba3f1c1a704609f47090b46858b08732ad5ab6d
+    - fixed: d876b1d23f0642304c758194045889a19ea823a0
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

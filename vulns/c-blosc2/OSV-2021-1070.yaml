@@ -1,0 +1,50 @@
+id: OSV-2021-1070
+summary: Heap-buffer-overflow in ZSTD_decompressBlock_internal
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=36623
+
+  ```
+  Crash type: Heap-buffer-overflow READ 4
+  Crash state:
+  ZSTD_decompressBlock_internal
+  ZSTD_decompressMultiFrame
+  ZSTD_decompressDCtx
+  ```
+modified: '2023-02-24T01:18:04.478150Z'
+published: '2021-07-29T00:01:10.187569Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=36623
+affected:
+- package:
+    name: c-blosc2
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/Blosc/c-blosc2.git
+    events:
+    - introduced: 861ba79f31393dec0a0782ca11cf32cebb6f6610
+  versions:
+  - v2.0.0
+  - v2.0.0-rc2
+  - v2.0.0.rc1
+  - v2.0.1
+  - v2.0.2
+  - v2.0.3
+  - v2.0.4
+  - v2.1.0
+  - v2.1.1
+  - v2.2.0
+  - v2.3.0
+  - v2.3.1
+  - v2.4.0
+  - v2.4.1
+  - v2.4.2
+  - v2.4.3
+  - v2.5.0
+  - v2.6.0
+  - v2.6.1
+  - v2.7.0
+  - v2.7.1
+  ecosystem_specific:
+    severity: MEDIUM

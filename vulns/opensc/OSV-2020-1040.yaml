@@ -1,0 +1,31 @@
+id: OSV-2020-1040
+summary: Heap-buffer-overflow in decode_bit_string
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16615
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  decode_bit_string
+  decode_bit_field
+  asn1_decode_entry
+  ```
+modified: '2022-04-13T03:04:41.691566Z'
+published: '2020-07-22T21:49:41.688762Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16615
+affected:
+- package:
+    name: opensc
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/OpenSC/OpenSC
+    events:
+    - introduced: b0241eefa1b47f1420456f5dbc43564d59961a54
+    - fixed: 9b4b080be788a602fa8f01ac8d7e29cdaad07902
+  ecosystem_specific:
+    severity: MEDIUM
+    introduced_range: unknown:b0241eefa1b47f1420456f5dbc43564d59961a54
+  versions: []

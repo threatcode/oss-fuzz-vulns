@@ -1,0 +1,40 @@
+id: OSV-2021-495
+summary: Heap-double-free in bit_chain_free
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31724
+
+  ```
+  Crash type: Heap-double-free
+  Crash state:
+  bit_chain_free
+  dwg_encode_MTEXT
+  dwg_encode_add_object
+  ```
+modified: '2022-04-13T03:04:41.065051Z'
+published: '2021-03-06T00:00:08.738235Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31724
+affected:
+- package:
+    name: libredwg
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/LibreDWG/libredwg
+    events:
+    - introduced: 749923e4dfaf9b32e13282325decd78595a60c95
+    - fixed: 9b6e0ff9ef02818df034fc42c3bd149a5ff89342
+  versions:
+  - 0.12.3.4163
+  - 0.12.3.4165
+  - 0.12.3.4167
+  - 0.12.3.4173
+  - 0.12.3.4176
+  - 0.12.3.4178
+  - 0.12.3.4180
+  - 0.12.3.4185
+  - 0.12.3.4189
+  - 0.12.3.4191
+  ecosystem_specific:
+    severity: HIGH

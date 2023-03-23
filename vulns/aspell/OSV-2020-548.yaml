@@ -1,0 +1,30 @@
+id: OSV-2020-548
+summary: Heap-buffer-overflow in acommon::DecodeDirect<unsigned short>::decode
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16531
+
+  ```
+  Crash type: Heap-buffer-overflow READ 2
+  Crash state:
+  acommon::DecodeDirect<unsigned short>::decode
+  acommon::Convert::convert
+  aspell_speller_suggest
+  ```
+modified: '2022-04-13T03:04:33.275580Z'
+published: '2020-07-01T00:00:16.159762Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16531
+affected:
+- package:
+    name: aspell
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/gnuaspell/aspell.git
+    events:
+    - introduced: e0646f9b063b23754951f1254f1ecb7af8ca36f3
+    - fixed: de29341638833ba7717bd6b5e6850998454b044b
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

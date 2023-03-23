@@ -1,0 +1,30 @@
+id: OSV-2021-427
+summary: Heap-buffer-overflow in LibRaw::kodak_c330_load_raw
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31181
+
+  ```
+  Crash type: Heap-buffer-overflow READ 1
+  Crash state:
+  LibRaw::kodak_c330_load_raw
+  LibRaw::unpack
+  libraw_fuzzer.cc
+  ```
+modified: '2022-04-13T03:04:39.994857Z'
+published: '2021-02-22T00:00:09.445952Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31181
+affected:
+- package:
+    name: libraw
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/libraw/libraw
+    events:
+    - introduced: 4c954948ba2de262b9cb23a1843fb8651aa3dcc1
+    - fixed: 363e91ea656f4ce46584b4b0af6285030f236b7e
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

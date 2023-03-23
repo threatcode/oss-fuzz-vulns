@@ -1,0 +1,30 @@
+id: OSV-2021-912
+summary: Heap-buffer-overflow in mrb_vm_exec
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=35712
+
+  ```
+  Crash type: Heap-buffer-overflow READ 4
+  Crash state:
+  mrb_vm_exec
+  mrb_vm_run
+  mrb_top_run
+  ```
+modified: '2022-04-13T03:04:39.677891Z'
+published: '2021-07-03T00:00:06.973804Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=35712
+affected:
+- package:
+    name: mruby
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/mruby/mruby
+    events:
+    - introduced: 99dbcec89c892bc90f36fbf38e46a9ec971e3a77
+    - fixed: a624da6fdb160b9a70a96c1ffe9dec017d7f5cb4
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

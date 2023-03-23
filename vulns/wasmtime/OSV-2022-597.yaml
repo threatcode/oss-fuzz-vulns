@@ -1,0 +1,49 @@
+id: OSV-2022-597
+summary: Heap-use-after-free in .tmpgt0oOx
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=49167
+
+  ```
+  Crash type: Heap-use-after-free READ 8
+  Crash state:
+  .tmpgt0oOx
+  .tmpgt0oOx
+  wasmtime_setjmp
+  ```
+modified: '2023-03-21T14:09:40.824713Z'
+published: '2022-07-19T00:01:55.792573Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=49167
+affected:
+- package:
+    name: wasmtime
+    ecosystem: OSS-Fuzz
+    purl: pkg:generic/wasmtime
+  ranges:
+  - type: GIT
+    repo: https://github.com/bytecodealliance/wasmtime
+    events:
+    - introduced: 08a60a0f082a68149218f4c82da04b39fac59611
+  versions:
+  - dev
+  - v0.40.0
+  - v0.40.1
+  - v1.0.0
+  - v1.0.1
+  - v2.0.0
+  - v2.0.1
+  - v1.0.2
+  - v2.0.2
+  - v3.0.0
+  - v3.0.1
+  - v4.0.0
+  - v5.0.0
+  - v6.0.0
+  - v4.0.1
+  - v5.0.1
+  - v6.0.1
+  - v7.0.0
+  ecosystem_specific:
+    severity: HIGH
+schema_version: 1.2.0

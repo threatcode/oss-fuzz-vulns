@@ -1,0 +1,34 @@
+id: OSV-2020-955
+summary: UNKNOWN WRITE in vcf_parse_format
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24097
+
+  ```
+  Crash type: UNKNOWN WRITE
+  Crash state:
+  vcf_parse_format
+  vcf_parse
+  vcf_read
+  ```
+modified: '2022-04-13T03:04:32.290566Z'
+published: '2020-07-22T00:00:25.417163Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=24097
+affected:
+- package:
+    name: htslib
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/samtools/htslib.git
+    events:
+    - introduced: dd6f0b72c92591252bb77818663629cc1a129949
+    - fixed: dcd4b7304941a8832fba2d0fc4c1e716e7a4e72c
+  versions:
+  - '1.10'
+  - 1.10.1
+  - 1.10.2
+  ecosystem_specific:
+    severity: HIGH
+    introduced_range: unknown:dd6f0b72c92591252bb77818663629cc1a129949

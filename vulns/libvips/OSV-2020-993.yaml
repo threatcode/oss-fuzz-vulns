@@ -1,0 +1,32 @@
+id: OSV-2020-993
+summary: Stack-buffer-overflow in write_png_comment
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16154
+
+  ```
+  Crash type: Stack-buffer-overflow WRITE {*}
+  Crash state:
+  write_png_comment
+  vips_slist_map2
+  vips_image_map
+  ```
+modified: '2022-04-13T03:04:38.107476Z'
+published: '2020-07-22T21:49:38.743050Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=16154
+affected:
+- package:
+    name: libvips
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/libvips/libvips
+    events:
+    - introduced: 0f1e278dd97163de5890117abdc9707fecc27e9f
+    - fixed: cfe0857ae102818d4ce5e9f4564af9d6bfb090da
+  ecosystem_specific:
+    severity: HIGH
+    introduced_range: unknown:0f1e278dd97163de5890117abdc9707fecc27e9f
+    fixed_range: 0f1e278dd97163de5890117abdc9707fecc27e9f:cfe0857ae102818d4ce5e9f4564af9d6bfb090da
+  versions: []

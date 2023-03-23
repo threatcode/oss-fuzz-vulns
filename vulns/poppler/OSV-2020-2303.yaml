@@ -1,0 +1,59 @@
+id: OSV-2020-2303
+summary: Use-of-uninitialized-value in Splash::pipeRunSimpleXBGR8
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=29651
+
+  ```
+  Crash type: Use-of-uninitialized-value
+  Crash state:
+  Splash::pipeRunSimpleXBGR8
+  Splash::drawSpan
+  Splash::fillWithPattern
+  ```
+modified: '2023-03-02T00:09:10.767120Z'
+published: '2021-01-18T00:00:08.864783Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=29651
+affected:
+- package:
+    name: poppler
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://gitlab.freedesktop.org/poppler/poppler.git
+    events:
+    - introduced: 2386bf37f9022cb5a9d434e30e8d8d55f4916e55
+  versions:
+  - poppler-20.12.0
+  - poppler-20.12.1
+  - poppler-21.01.0
+  - poppler-21.02.0
+  - poppler-21.03.0
+  - poppler-21.04.0
+  - poppler-21.05.0
+  - poppler-21.06.0
+  - poppler-21.06.1
+  - poppler-21.07.0
+  - poppler-21.08.0
+  - poppler-21.09.0
+  - poppler-21.10.0
+  - poppler-21.11.0
+  - poppler-21.12.0
+  - poppler-22.01.0
+  - poppler-22.02.0
+  - poppler-22.03.0
+  - poppler-22.04.0
+  - poppler-22.05.0
+  - poppler-22.06.0
+  - poppler-22.07.0
+  - poppler-22.08.0
+  - poppler-22.09.0
+  - poppler-22.10.0
+  - poppler-22.11.0
+  - poppler-22.12.0
+  - poppler-23.01.0
+  - poppler-23.02.0
+  - poppler-23.03.0
+  ecosystem_specific:
+    severity: MEDIUM

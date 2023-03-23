@@ -1,0 +1,28 @@
+id: OSV-2021-514
+summary: UNKNOWN READ in _fini
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31953
+
+  ```
+  Crash type: UNKNOWN READ
+  Crash state:
+  _fini
+  ```
+modified: '2022-04-13T03:04:32.242907Z'
+published: '2021-03-12T00:00:13.850530Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=31953
+affected:
+- package:
+    name: serenity
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/SerenityOS/serenity
+    events:
+    - introduced: 51b880b0383089822f513330cd64f93b54b9f21c
+    - fixed: 09bd5f8772156f0031a3fa914bed2371429d09a0
+  ecosystem_specific:
+    severity: MEDIUM
+  versions: []

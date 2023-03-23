@@ -1,0 +1,33 @@
+id: OSV-2021-333
+summary: Heap-buffer-overflow in int flatbuffers::ReadScalar<int>
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=30699
+
+  ```
+  Crash type: Heap-buffer-overflow READ 4
+  Crash state:
+  int flatbuffers::ReadScalar<int>
+  flatbuffers::Table::GetVTable
+  flatbuffers::Table::GetOptionalFieldOffset
+  ```
+modified: '2022-04-13T03:04:42.062018Z'
+published: '2021-02-10T00:00:03.957076Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=30699
+affected:
+- package:
+    name: flatbuffers
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/google/flatbuffers
+    events:
+    - introduced: 6f3e45eca1fde7a68cb72fd4499a3647f719c9db
+    - fixed: 8fb8c2ce1dff00bc1455aba0770eb7eae9a06ece
+  versions:
+  - v2.0.0
+  ecosystem_specific:
+    severity: MEDIUM
+  database_specific:
+    fixed_range: 1d063d87cfce93f498648b005fb72e33d031ffdd:8fb8c2ce1dff00bc1455aba0770eb7eae9a06ece

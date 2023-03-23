@@ -1,0 +1,35 @@
+id: OSV-2020-954
+summary: Use-of-uninitialized-value in adler32_z
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=13317
+
+  ```
+  Crash type: Use-of-uninitialized-value
+  Crash state:
+  adler32_z
+  inflate
+  ZIPDecode
+  ```
+modified: '2022-04-13T03:04:31.489268Z'
+published: '2020-07-22T00:00:25.376679Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=13317
+affected:
+- package:
+    name: opencv
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/opencv/opencv.git
+    events:
+    - introduced: 6bcf0b5519c190826cf0f21efd87cbe256eabc48
+    - fixed: 8afb2f0cb7a712d03dd58a2873fc449215df153d
+    - fixed: 10ce9358230670c91caeab39c7ae7bb099229046
+  versions:
+  - 4.0.1
+  - 4.1.0-openvino
+  - 3.4.5
+  ecosystem_specific:
+    introduced_range: unknown:6bcf0b5519c190826cf0f21efd87cbe256eabc48
+    severity: MEDIUM

@@ -1,0 +1,30 @@
+id: OSV-2020-273
+summary: Heap-use-after-free in copy_string
+details: |
+  OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=19509
+
+  ```
+  Crash type: Heap-use-after-free READ 1
+  Crash state:
+  copy_string
+  do_uncompress_block
+  process_block
+  ```
+modified: '2022-04-13T03:04:41.226766Z'
+published: '2020-06-30T00:00:44.820643Z'
+references:
+- type: REPORT
+  url: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=19509
+affected:
+- package:
+    name: libarchive
+    ecosystem: OSS-Fuzz
+  ranges:
+  - type: GIT
+    repo: https://github.com/libarchive/libarchive.git
+    events:
+    - introduced: 47bb8187d3ef2d49ee8c7841cb2872b3cfa1f6f7
+    - fixed: c9267d665c30fa78023bd70b8e9c6f02450777e2
+  ecosystem_specific:
+    severity: HIGH
+  versions: []

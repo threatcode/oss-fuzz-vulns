@@ -41,6 +41,11 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+    - name: Auto-discover new projects
+      run: |
+        python scripts/auto_add_projects.py
+        python scripts/discover_projects_from_vulns.py
+
     - name: Check for new vulnerabilities from OSV
       id: check-updates
       run: |

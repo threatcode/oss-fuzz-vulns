@@ -117,7 +117,8 @@ def main():
         print("No new vulnerabilities found")
     
     # Return exit code based on whether updates were found
-    sys.exit(0 if updates_found else 1)
+    # Exit 0 if updates found, 1 if no updates (for GitHub Actions conditional)
+    return 0 if updates_found else 1
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

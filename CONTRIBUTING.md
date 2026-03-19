@@ -3,6 +3,31 @@
 We'd love to accept your patches and contributions to this project. There are
 just a few small guidelines you need to follow.
 
+## Automated Workflows
+
+This repository includes automated workflows to keep the vulnerability database up-to-date:
+
+### Daily Update Workflow
+- **Schedule**: Runs daily at 2:00 AM UTC
+- **Purpose**: Automatically fetches new vulnerabilities from OSV and creates pull requests
+- **Actions**:
+  - Checks for new OSS-Fuzz vulnerabilities from the OSV API
+  - Imports failed bisection vulnerabilities that can be resolved
+  - Validates all vulnerability files against the OSV schema
+  - Creates automated pull requests for updates
+
+### Weekly Maintenance Workflow
+- **Schedule**: Runs weekly on Sundays at 3:00 AM UTC
+- **Purpose**: Performs repository maintenance and cleanup
+- **Actions**:
+  - Checks for duplicate vulnerabilities
+  - Validates all vulnerability files
+  - Generates repository statistics
+  - Identifies outdated vulnerabilities
+  - Updates README with latest statistics
+
+Both workflows can be triggered manually via the GitHub Actions interface.
+
 ## Contributor License Agreement
 
 Contributions to this project must be accompanied by a Contributor License

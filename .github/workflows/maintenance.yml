@@ -1,0 +1,86 @@
+name: Repository Maintenance
+
+on:
+  schedule:
+    # Run weekly on Sundays at 3:00 AM UTC
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+    # Allow manual triggering
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml requests jsonschema
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Check for duplicate vulnerabilities
+      run: |
+        python scripts/check_duplicates.py
+
+    - name: Validate all vulnerability files
+      run: |
+        python scripts/validate_vulns.py
+
+    - name: Generate statistics
+      run: |
+        python scripts/generate_stats.py > stats.md
+
+    - name: Check for outdated vulnerabilities
+      run: |
+        python scripts/check_outdated.py
+
+    - name: Update README with latest stats
+      run: |
+        python scripts/update_readme.py
+
+    - name: Create maintenance PR if needed
+      if: contains(github.event.head_commit.message, 'maintenance-changes')
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "maintenance: repository cleanup and updates"
+        title: "Weekly repository maintenance"
+        body: |
+          🔧 **Automated repository maintenance**
+          
+          This PR contains:
+          - Duplicate vulnerability cleanup
+          - Updated statistics and documentation
+          - Outdated vulnerability checks
+          - Schema validation fixes
+          
+          ---
+          
+          *This PR was created by the weekly maintenance workflow.*
+        branch: maintenance
+        delete-branch: true
+
+    - name: Upload statistics artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: repository-stats
+        path: stats.md
+        retention-days: 30

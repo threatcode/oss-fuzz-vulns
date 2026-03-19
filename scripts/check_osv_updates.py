@@ -6,13 +6,25 @@ Script to check for new vulnerabilities from OSV and update the local repository
 import json
 import os
 import sys
-import urllib.request
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC
 from pathlib import Path
 
-# OSV API endpoint
-OSV_API_URL = "https://api.osv.dev/v1/vulns"
+# OSV ecosystem
 OSS_FUZZ_ECOSYSTEM = "OSS-Fuzz"
+
+def get_existing_projects():
+    """Get list of existing project names in the repository."""
+    vulns_dir = Path(__file__).parent.parent / "vulns"
+    projects = set()
+    
+    if not vulns_dir.exists():
+        return projects
+    
+    for project_dir in vulns_dir.iterdir():
+        if project_dir.is_dir():
+            projects.add(project_dir.name)
+    
+    return projects
 
 def get_existing_vulns():
     """Get list of existing vulnerability IDs in the repository."""
@@ -32,25 +44,59 @@ def get_existing_vulns():
 
 def fetch_osv_vulns(days_back=7):
     """Fetch recent vulnerabilities from OSV API."""
+    # Use the OSV query endpoint
+    OSV_QUERY_URL = "https://api.osv.dev/v1/query"
+    
     # Calculate date range for recent vulnerabilities
-    end_date = datetime.utcnow()
+    end_date = datetime.now(UTC)
     start_date = end_date - timedelta(days=days_back)
     
-    # Query parameters
-    params = {
-        "ecosystem": OSS_FUZZ_ECOSYSTEM,
-        "published_after": start_date.isoformat() + "Z",
-        "limit": 1000
-    }
-    
-    # Build query URL
-    query_string = "&".join([f"{k}={v}" for k, v in params.items()])
-    url = f"{OSV_API_URL}?{query_string}"
+    # Get existing projects to query
+    projects = list(get_existing_projects())
+    all_vulns = []
     
     try:
-        with urllib.request.urlopen(url) as response:
-            data = json.loads(response.read().decode())
-            return data.get("vulns", [])
+        import requests
+        
+        # Query each project separately
+        for project in projects:
+            query_payload = {
+                "package": {
+                    "name": project,
+                    "ecosystem": OSS_FUZZ_ECOSYSTEM
+                }
+            }
+            
+            try:
+                response = requests.post(OSV_QUERY_URL, json=query_payload, timeout=30)
+                response.raise_for_status()
+                
+                result = response.json()
+                vulns = result.get("vulns", [])
+                
+                # Filter by date if needed
+                if days_back > 0:
+                    filtered_vulns = []
+                    for vuln in vulns:
+                        published = vuln.get("published", "")
+                        if published:
+                            try:
+                                pub_date = datetime.fromisoformat(published.replace('Z', '+00:00'))
+                                if pub_date >= start_date:
+                                    filtered_vulns.append(vuln)
+                            except:
+                                pass
+                    vulns = filtered_vulns
+                
+                all_vulns.extend(vulns)
+                print(f"Found {len(vulns)} recent vulnerabilities for {project}")
+                
+            except Exception as e:
+                print(f"Error querying {project}: {e}")
+                continue
+        
+        return all_vulns
+            
     except Exception as e:
         print(f"Error fetching vulnerabilities from OSV: {e}")
         return []
@@ -82,7 +128,7 @@ def main():
     print(f"Found {len(existing_vulns)} existing vulnerabilities")
     
     # Fetch recent vulnerabilities from OSV
-    osv_vulns = fetch_osv_vulns()
+    osv_vulns = fetch_osv_vulns(days_back=7)
     print(f"Fetched {len(osv_vulns)} recent vulnerabilities from OSV")
     
     # Check for new vulnerabilities
